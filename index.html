@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRF Controle de Ponto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="font-inter relative">
+    <!-- FUNDO TRANSPARENTE COM LOGO PRF -->
+    <div
+      class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5"
+    >
+      <img
+        src="assets/logoprf.jpeg"
+        alt="PRF Logo"
+        class="w-96 h-96 object-contain"
+      />
+    </div>
+
+    <div class="flex h-screen relative z-10">
+      <!-- SIDEBAR -->
+      <aside class="w-64 bg-[#002060] text-white flex flex-col">
+        <div
+          class="p-6 border-b border-[#FFD200] flex justify-center items-center"
+        >
+          <img
+            src="assets/logosprfsemfundo.png"
+            class="h-40 w-auto object-contain"
+            alt="Logo PRF"
+          />
+        </div>
+
+        <nav class="flex-1 mt-4">
+          <button
+            onclick="renderTab('inicio')"
+            class="menu-btn flex items-center gap-3 p-4 hover:bg-[#FFD200]/20 w-full text-left"
+          >
+            ⏱️ Pontos em aberto
+          </button>
+          <button
+            onclick="renderTab('completo')"
+            class="menu-btn flex items-center gap-3 p-4 hover:bg-[#FFD200]/20 w-full text-left"
+          >
+            ✅ Pontos encerrados
+          </button>
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="flex-1 flex flex-col bg-gray-50 relative">
+        <!-- MARCA D'ÁGUA DO LOGO -->
+        <img
+          src="assets/Prf_brasao_novo.jpg"
+          alt="PRF Logo"
+          class="absolute inset-0 w-1/1 h-4/5 opacity-10 m-auto pointer-events-none z-0"
+        />
+
+        <!-- NAVBAR SUPERIOR -->
+        <header
+          class="bg-[#002060] text-white shadow-md h-20 flex items-center justify-between px-6 sticky top-0 z-30"
+        >
+          <h1 class="text-2xl font-bold tracking-wide">
+            PRF Controle de Ponto
+          </h1>
+          <div id="dataHora" class="font-medium"></div>
+        </header>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="flex-1 p-6 overflow-y-auto relative z-10">
+          <div class="max-w-6xl mx-auto">
+            <!-- CARDS DE RESUMO -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <!-- Card Speed -->
+
+              <!-- Card DBM -->
+              <div
+                id="cardDBM"
+                class="bg-white border border-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition-all"
+              >
+                <p class="text-gray-500 text-sm">Agentes DBM em serviço</p>
+                <h2 class="text-2xl font-bold text-[#002060]">0</h2>
+              </div>
+            </div>
+
+            <div id="mainContent">
+              <!-- SEÇÃO DE TABELA DE USUÁRIOS -->
+              <section class="mb-8">
+                <h2
+                  class="text-xl font-semibold text-[#002060] mb-4 flex items-center gap-2"
+                >
+                  ⏱️ Bate Ponto Inicial - Listagem
+                </h2>
+
+                <!-- BARRA DE PESQUISA -->
+                <div class="mb-4">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Pesquisar por Nome/QRA..."
+                    class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#002060]"
+                  />
+                </div>
+
+                <!-- TABELA -->
+                <div class="overflow-x-auto">
+                  <table
+                    class="min-w-full bg-white border border-gray-200 rounded-xl shadow"
+                    id="userTable"
+                  >
+                    <thead class="bg-[#002060] text-white">
+                      <tr>
+                        <th class="text-left p-4">Nome / QRA</th>
+                        <th class="text-left p-4">Patente</th>
+                        <th class="text-left p-4">Veículo</th>
+                        <th class="text-left p-4">Início</th>
+                        <th class="text-left p-4">Fim</th>
+                        <th class="text-left p-4">Data</th>
+                        <th class="text-left p-4">Horas Últimos 7 dias</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="border-t border-gray-200 hover:bg-gray-50 transition-colors"
+                      >
+                        <td class="p-4">João Silva / 12345</td>
+                        <td class="p-4">Speed Elite</td>
+                        <td class="p-4">Alstom Martin</td>
+                        <td class="p-4">08:00</td>
+                        <td class="p-4">-</td>
+                        <td class="p-4">2025-09-25</td>
+                        <td class="p-4">56h</td>
+                      </tr>
+                      <tr
+                        class="border-t border-gray-200 hover:bg-gray-50 transition-colors"
+                      >
+                        <td class="p-4">Carlos Lima / 54321</td>
+                        <td class="p-4">Instrutor</td>
+                        <td class="p-4">Camaro</td>
+                        <td class="p-4">08:15</td>
+                        <td class="p-4">-</td>
+                        <td class="p-4">2025-09-24</td>
+                        <td class="p-4">42h</td>
+                      </tr>
+                      <!-- Mais linhas -->
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINK PARA JAVASCRIPT EXTERNO -->
+        <script src="search.js"></script>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

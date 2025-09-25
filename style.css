@@ -1,0 +1,6 @@
+.input-modern {
+  @apply border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#FFD200] w-full;
+}
+.menu-btn {
+  @apply transition-colors duration-200;
+}
