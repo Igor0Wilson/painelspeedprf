@@ -32,7 +32,7 @@
           />
         </div>
 
-        <nav class="flex-1 mt-4">
+        <nav class="flex-1 mt-4 flex flex-col">
           <button
             onclick="renderTab('inicio')"
             class="menu-btn flex items-center gap-3 p-4 hover:bg-[#FFD200]/20 w-full text-left"
@@ -44,6 +44,12 @@
             class="menu-btn flex items-center gap-3 p-4 hover:bg-[#FFD200]/20 w-full text-left"
           >
             ✅ Pontos encerrados
+          </button>
+          <button
+            onclick="renderTab('agentes')"
+            class="menu-btn flex items-center gap-3 p-4 hover:bg-[#FFD200]/20 w-full text-left"
+          >
+            👮‍♂️ Cadastrar Agentes
           </button>
         </nav>
       </aside>
@@ -131,6 +137,80 @@
         <!-- LINK PARA JAVASCRIPT EXTERNO -->
         <script src="search.js"></script>
       </main>
+    </div>
+
+    <!-- MODAL EDITAR USUÁRIO -->
+    <!-- Modal Editar Usuário -->
+    <div
+      id="modalEditar"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full flex flex-col gap-4"
+      >
+        <h3 class="text-lg font-semibold text-[#002060]">✏️ Editar Usuário</h3>
+        <input type="hidden" id="editarId" />
+        <input
+          type="text"
+          id="editarQra"
+          placeholder="QRA"
+          class="p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          id="editarPatente"
+          placeholder="Patente"
+          class="p-2 border rounded"
+          required
+        />
+
+        <div class="flex justify-end gap-2">
+          <button
+            onclick="fecharModalEditar()"
+            class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Cancelar
+          </button>
+          <button
+            onclick="salvarEdicao()"
+            class="px-4 py-2 bg-[#002060] text-white rounded hover:bg-[#001040]"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL CONFIRMAÇÃO -->
+    <div
+      id="modalConfirmar"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    >
+      <div
+        class="bg-white rounded-xl shadow-lg w-full max-w-sm p-6 text-center"
+      >
+        <h2 class="text-lg font-bold text-[#002060] mb-4">
+          ⚠️ Confirmar Exclusão
+        </h2>
+        <p class="text-gray-700 mb-6">
+          Tem certeza que deseja excluir este agente?
+        </p>
+        <div class="flex justify-center gap-3">
+          <button
+            onclick="fecharModalConfirmar()"
+            class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+          >
+            Cancelar
+          </button>
+          <button
+            onclick="confirmarExclusao()"
+            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+          >
+            Excluir
+          </button>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>
